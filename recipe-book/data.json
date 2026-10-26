@@ -1,0 +1,19 @@
+{
+  "categories": [
+    { "id": "cat_hun", "name": "荤菜", "emoji": "🍖", "subs": [
+      { "id": "sub_1", "name": "红烧" },
+      { "id": "sub_2", "name": "清蒸" },
+      { "id": "sub_3", "name": "小炒" }
+    ]},
+    { "id": "cat_su", "name": "素菜", "emoji": "🥬", "subs": [
+      { "id": "sub_4", "name": "清炒" },
+      { "id": "sub_5", "name": "凉拌" },
+      { "id": "sub_6", "name": "汤羹" }
+    ]},
+    { "id": "cat_zhu", "name": "主食", "emoji": "🍚", "subs": [
+      { "id": "sub_7", "name": "面食" },
+      { "id": "sub_8", "name": "米饭" }
+    ]}
+  ],
+  "recipes": []
+}
