@@ -1208,7 +1208,7 @@ if(cfg){
   bootApp().catch(() => showSetup(cfg));
 }else if(ADMIN_SHARED_TOKEN){
   // 管理员提供共享 token → 只需用户填 owner/repo/branch
-  showSetup({ token: ADMIN_SHARED_TOKEN, branch: 'main' });
+  showSetup({ owner:'kklmmm', repo:'kk-', token: ADMIN_SHARED_TOKEN, branch: 'main' });
   $('inpToken').closest('label').style.display = 'none';
 }else{
   showSetup(null);
