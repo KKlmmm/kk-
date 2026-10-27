@@ -317,6 +317,20 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
   .empty .big{font-size:52px}
 }
 @media (hover:none){.del-btn{opacity:1}}
+  /* 全屏看图样式 */
+#imgViewer {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex; align-items: center; justify-content: center;
+  cursor: zoom-out; animation: fadeIn 0.2s ease;
+}
+#imgViewer img {
+  max-width: 95vw; max-height: 95vh;
+  border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  animation: pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  object-fit: contain;
+}
 </style>
 </head>
 <body>
@@ -454,7 +468,10 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
     </div>
     <div class="modal-body">
       <div id="previewImgContainer" style="text-align: center; margin-bottom: 10px;" hidden>
-        <img id="previewImgDisplay" style="max-width: 100%; max-height: 240px; border-radius: 14px; border: 2.5px solid var(--ink); object-fit: cover;">
+        <img id="previewImgDisplay" 
+     style="max-width: 100%; max-height: 240px; border-radius: 14px; border: 2.5px solid var(--ink); object-fit: cover; cursor: zoom-in;"
+     onclick="openImgViewer(this.src)">
+      
       </div>
       
       <div style="display: flex; gap: 8px; margin-bottom: 4px;">
@@ -476,6 +493,10 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
       <button class="primary-btn" id="editFromPreview" style="width: 100%;">✏️ 修改这道菜</button>
     </div>
   </div>
+</div>
+  <!-- 全屏看图容器 -->
+<div id="imgViewer" hidden onclick="closeImgViewer()">
+  <img id="imgViewerImg" src="" alt="大图">
 </div>
 <script>
 /* ================================================================
@@ -976,7 +997,18 @@ function clearPreviewUrl(){
    预览弹窗逻辑
    ================================================================ */
 const previewMask = $('previewMask');
+// 打开全屏大图
+function openImgViewer(src) {
+  if (!src) return;
+  document.getElementById('imgViewerImg').src = src;
+  document.getElementById('imgViewer').hidden = false;
+}
 
+// 关闭全屏大图
+function closeImgViewer() {
+  document.getElementById('imgViewer').hidden = true;
+  setTimeout(() => { document.getElementById('imgViewerImg').src = ''; }, 200);
+}
 function openPreview(recipeId){
   const r = state.recipes.find(x => x.id === recipeId);
   if(!r) return;
