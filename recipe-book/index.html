@@ -600,9 +600,9 @@ async function loadData(){
       throw new Error('data.json 格式错误，无法解析');
     }
   }
-  if(state.categories.length && expanded.size === 0){
-    state.categories.forEach(c => expanded.add(c.id));
-  }
+  //if(state.categories.length && expanded.size === 0){
+   // state.categories.forEach(c => expanded.add(c.id));
+ /// }
 }
 
 function defaultState(){
