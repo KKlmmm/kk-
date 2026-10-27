@@ -445,7 +445,38 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
     </div>
   </div>
 </div>
+<!-- ============ 预览弹窗 ============ -->
+<div class="modal-mask" id="previewMask" hidden>
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="previewTitle">菜谱详情</h2>
+      <button class="close-btn" id="closePreview">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="previewImgContainer" style="text-align: center; margin-bottom: 10px;" hidden>
+        <img id="previewImgDisplay" style="max-width: 100%; max-height: 240px; border-radius: 14px; border: 2.5px solid var(--ink); object-fit: cover;">
+      </div>
+      
+      <div style="display: flex; gap: 8px; margin-bottom: 4px;">
+        <span class="tag" id="previewCat"></span>
+        <span class="tag" id="previewSub" style="background: #e6e0ff; color: #4b35b5;"></span>
+      </div>
 
+      <div class="field">
+        <label>🥕 食材</label>
+        <div id="previewIngredients" style="font-size: 14px; line-height: 1.7; white-space: pre-wrap; background: #fdfbff; border: 2px solid #eadffb; border-radius: 12px; padding: 10px 14px; color: #4a455e;"></div>
+      </div>
+
+      <div class="field">
+        <label>📝 做法</label>
+        <div id="previewSteps" style="font-size: 14px; line-height: 1.7; white-space: pre-wrap; background: #fdfbff; border: 2px solid #eadffb; border-radius: 12px; padding: 10px 14px; color: #4a455e;"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="primary-btn" id="editFromPreview" style="width: 100%;">✏️ 修改这道菜</button>
+    </div>
+  </div>
+</div>
 <script>
 /* ================================================================
    配置
@@ -856,7 +887,8 @@ function renderMain(){
         <h3>${esc(r.name)}</h3>
         <span class="tag">${esc(tag)}</span>
       </div>`;
-    card.onclick = () => openModal(r.id);
+////////card.onclick = () => openModal(r.id);////
+        card.onclick = () => openPreview(r.id);
     grid.appendChild(card);
   });
 }
@@ -940,6 +972,56 @@ function updatePreview(){
 function clearPreviewUrl(){
   if(previewUrl){ URL.revokeObjectURL(previewUrl); previewUrl = null; }
 }
+ /* ================================================================
+   预览弹窗逻辑
+   ================================================================ */
+const previewMask = $('previewMask');
+
+function openPreview(recipeId){
+  const r = state.recipes.find(x => x.id === recipeId);
+  if(!r) return;
+
+  // 填充基础信息
+  $('previewTitle').textContent = r.name;
+  $('previewCat').textContent = catName(r.catId) || '未分类';
+  
+  const sub = subName(r.catId, r.subId);
+  $('previewSub').textContent = sub || '';
+  $('previewSub').hidden = !sub;
+
+  // 填充食材和做法（如果没有内容则显示“未填写”）
+  $('previewIngredients').textContent = r.ingredients || '暂无记录';
+  $('previewSteps').textContent = r.steps || '暂无记录';
+
+  // 图片处理
+  const imgContainer = $('previewImgContainer');
+  const imgEl = $('previewImgDisplay');
+  if(r.image){
+    imgEl.src = r.image;
+    imgContainer.hidden = false;
+  }else{
+    imgEl.removeAttribute('src');
+    imgContainer.hidden = true;
+  }
+
+  // 绑定修改按钮
+  $('editFromPreview').onclick = () => {
+    closePreview();
+    openModal(r.id); // 打开原来的编辑弹窗
+  };
+
+  previewMask.hidden = false;
+}
+
+function closePreview(){
+  previewMask.hidden = true;
+}
+
+// 绑定关闭事件
+$('closePreview').onclick = closePreview;
+previewMask.addEventListener('click', e => { 
+  if(e.target === previewMask) closePreview(); 
+}); 
 
 function openModal(recipeId){
   editingId = recipeId || null;
