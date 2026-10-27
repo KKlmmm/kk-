@@ -452,7 +452,7 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
    ================================================================ */
 // 可选：管理员可以在这里填入一个共享 Token（不推荐公开仓库使用）
 // 填入后，所有访问者无需自己提供 Token，直接可用
-const ADMIN_SHARED_TOKEN = '';
+const ADMIN_SHARED_TOKEN = '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';
 
 const CFG_KEY = 'gh_recipe_cfg_v1';
 
@@ -1203,14 +1203,14 @@ async function bootApp(){
   }
 }
 
-if(cfg){
+/*if(cfg){
   // 已配置 → 直接进入
   bootApp().catch(() => showSetup(cfg));
 }else{
   showSetup(null);
-}   
+}   */
 
-  /*if(cfg){
+  if(cfg){
   // 本地有缓存（之前登录过），直接进入
   bootApp().catch(() => showSetup(cfg));
 }else if(ADMIN_SHARED_TOKEN){
@@ -1226,7 +1226,7 @@ if(cfg){
 }else{
   // 啥也没有，显示完整配置页
   showSetup(null);
-}   */
+}   
   
 </script>
 </body>
