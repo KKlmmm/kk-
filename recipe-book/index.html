@@ -1204,14 +1204,9 @@ async function bootApp(){
 }
 
 if(cfg){
-  // 本地有缓存（之前登录过），直接进入
+  // 已配置 → 直接进入
   bootApp().catch(() => showSetup(cfg));
-}else if(ADMIN_SHARED_TOKEN){
-  // 内置了 Token → 隐藏 Token 框，只需用户填 仓库名/分支
-  showSetup({ token: ADMIN_SHARED_TOKEN, branch: 'main' });
-  $('inpToken').closest('label').style.display = 'none';
 }else{
-  // 什么都没填，显示完整的配置页
   showSetup(null);
 }
 </script>
