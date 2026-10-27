@@ -1207,9 +1207,15 @@ if(cfg){
   // 已配置 → 直接进入
   bootApp().catch(() => showSetup(cfg));
 }else if(ADMIN_SHARED_TOKEN){
-  // 管理员提供共享 token → 只需用户填 owner/repo/branch
-  showSetup({ owner:'kklmmm', repo:'kk-', token: ADMIN_SHARED_TOKEN, branch: 'main' });
-  $('inpToken').closest('label').style.display = 'none';
+  // 管理员提供共享 token → 静默自动连接，直接进入
+  cfg = { owner: 'KKlmmm', repo: 'kk-', branch: 'main', token: ADMIN_SHARED_TOKEN };
+  saveCfg(cfg); // 自动保存在当前浏览器，下次打开直接秒进
+  
+  bootApp().catch(err => {
+    // 只有网络错误或Token失效时，才展示配置页
+    showSetup(cfg);
+  });
+}
 }else{
   showSetup(null);
 }
