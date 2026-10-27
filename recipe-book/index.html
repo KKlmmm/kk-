@@ -452,7 +452,7 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
    ================================================================ */
 // 可选：管理员可以在这里填入一个共享 Token（不推荐公开仓库使用）
 // 填入后，所有访问者无需自己提供 Token，直接可用
-const ADMIN_SHARED_TOKEN = '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';
+const ADMIN_SHARED_TOKEN = '';
 
 const CFG_KEY = 'gh_recipe_cfg_v1';
 
@@ -1206,15 +1206,6 @@ async function bootApp(){
 if(cfg){
   // 已配置 → 直接进入
   bootApp().catch(() => showSetup(cfg));
-}else if(ADMIN_SHARED_TOKEN){
-  // 管理员提供共享 token → 静默自动连接，直接进入
-  cfg = { owner: 'KKlmmm', repo: 'kk-', branch: 'main', token: ADMIN_SHARED_TOKEN };
-  saveCfg(cfg); // 自动保存在当前浏览器，下次打开直接秒进
-  
-  bootApp().catch(err => {
-    // 只有网络错误或Token失效时，才展示配置页
-    showSetup(cfg);
-  });
 }else{
   showSetup(null);
 }
