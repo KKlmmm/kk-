@@ -56,6 +56,16 @@
   ],
   "recipes": [
     {
+      "id": "pof12m6t",
+      "name": "番茄炒蛋",
+      "image": "https://cdn.jsdelivr.net/gh/KKlmmm/kk-@main/images/1793112795946-1rmpyf3y.jpg",
+      "catId": "cat_su",
+      "subId": "sub_4",
+      "ingredients": "1.番茄2个\n2.鸡蛋4个",
+      "steps": "1.先炒鸡蛋",
+      "createdAt": 1793112799570
+    },
+    {
       "id": "k2jotafr",
       "name": "赵空空",
       "image": "https://cdn.jsdelivr.net/gh/KKlmmm/kk-@main/images/1793110732547-hbet1mw0.jpg",
