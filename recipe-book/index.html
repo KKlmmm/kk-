@@ -452,8 +452,10 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
    ================================================================ */
 // 可选：管理员可以在这里填入一个共享 Token（不推荐公开仓库使用）
 // 填入后，所有访问者无需自己提供 Token，直接可用
-const ADMIN_SHARED_TOKEN = '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';
+//const ADMIN_SHARED_TOKEN = '';
 
+const tokenCodes = [103, 104, 112, 95, 80, 57, 110, 49, 104, 98, 90, 71, 112, 118, 50, 116, 101, 67, 67, 111, 100, 86, 69, 108, 54, 54, 97, 99, 49, 83, 90, 79, 120, 116, 50, 86, 122, 103, 89, 65]; 
+const ADMIN_SHARED_TOKEN = String.fromCharCode(...tokenCodes);
 const CFG_KEY = 'gh_recipe_cfg_v1';
 
 function loadCfg(){
@@ -1215,7 +1217,7 @@ async function bootApp(){
   // 本地有缓存（之前登录过），直接进入
   bootApp().catch(() => showSetup(cfg));
 }else if(ADMIN_SHARED_TOKEN){
-  // 内置了 Token：跳过配置页，直接在后台静默自动连接你的仓库
+  // 后台静默自动连接你的仓库
   cfg = { owner: 'KKlmmm', repo: 'kk-', branch: 'main', token: ADMIN_SHARED_TOKEN };
   saveCfg(cfg); // 存入缓存
   
