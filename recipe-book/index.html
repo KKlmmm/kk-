@@ -1203,14 +1203,14 @@ async function bootApp(){
   }
 }
 
-/*if(cfg){
+if(cfg){
   // 已配置 → 直接进入
   bootApp().catch(() => showSetup(cfg));
 }else{
   showSetup(null);
-}   */
+}   
 
-  if(cfg){
+  /*if(cfg){
   // 本地有缓存（之前登录过），直接进入
   bootApp().catch(() => showSetup(cfg));
 }else if(ADMIN_SHARED_TOKEN){
@@ -1226,7 +1226,7 @@ async function bootApp(){
 }else{
   // 啥也没有，显示完整配置页
   showSetup(null);
-}
+}   */
   
 </script>
 </body>
