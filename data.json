@@ -56,6 +56,16 @@
   ],
   "recipes": [
     {
+      "id": "k2jotafr",
+      "name": "屁屁的屁屁",
+      "image": "https://cdn.jsdelivr.net/gh/KKlmmm/kk-@main/images/1793110732547-hbet1mw0.jpg",
+      "catId": "cat_su",
+      "subId": "sub_5",
+      "ingredients": "屁屁",
+      "steps": "屁ヽ(#`Д´)ﾉ",
+      "createdAt": 1793110734658
+    },
+    {
       "id": "1ih3u2ys",
       "name": "小炒肉",
       "image": "https://raw.githubusercontent.com/KKlmmm/kk-/main/images/1793094758697-rl2sllmt.jpg",
