@@ -1203,12 +1203,31 @@ async function bootApp(){
   }
 }
 
-if(cfg){
+/*if(cfg){
   // 已配置 → 直接进入
   bootApp().catch(() => showSetup(cfg));
 }else{
   showSetup(null);
+}   */
+
+  if(cfg){
+  // 本地有缓存（之前登录过），直接进入
+  bootApp().catch(() => showSetup(cfg));
+}else if(ADMIN_SHARED_TOKEN){
+  // 内置了 Token：跳过配置页，直接在后台静默自动连接你的仓库
+  cfg = { owner: 'KKlmmm', repo: 'kk-', branch: 'main', token: ADMIN_SHARED_TOKEN };
+  saveCfg(cfg); // 存入缓存
+  
+  // 直接开始加载数据
+  bootApp().catch(err => {
+    // 只有万一网络超时连不上，或者仓库名填错了，才退回显示配置页面
+    showSetup(cfg);
+  });
+}else{
+  // 啥也没有，显示完整配置页
+  showSetup(null);
 }
+  
 </script>
 </body>
 </html>
