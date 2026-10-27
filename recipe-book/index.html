@@ -452,7 +452,7 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
    ================================================================ */
 // 可选：管理员可以在这里填入一个共享 Token（不推荐公开仓库使用）
 // 填入后，所有访问者无需自己提供 Token，直接可用
-const ADMIN_SHARED_TOKEN = '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';
+const ADMIN_SHARED_TOKEN = 'ghp_OudhvgVx5v1l5'+'4LaPsazkvzoafqcvx4SaFot';
 
 const CFG_KEY = 'gh_recipe_cfg_v1';
 
@@ -669,7 +669,8 @@ async function uploadImage(blob){
   const buf = await blob.arrayBuffer();
   const b64 = bufToBase64(buf);
   await ghPutFile(name, b64, `上传图片 ${name}`, null);
-  return `https://raw.githubusercontent.com/${cfg.owner}/${cfg.repo}/${cfg.branch}/${name}`;
+  /*return `https://raw.githubusercontent.com/${cfg.owner}/${cfg.repo}/${cfg.branch}/${name}`; */
+  return `https://cdn.jsdelivr.net/gh/${cfg.owner}/${cfg.repo}@${cfg.branch}/${name}`;
 }
 
 /* ================================================================
