@@ -54,5 +54,16 @@
       ]
     }
   ],
-  "recipes": []
+  "recipes": [
+    {
+      "id": "1ih3u2ys",
+      "name": "小炒肉",
+      "image": null,
+      "catId": "cat_hun",
+      "subId": "sub_3",
+      "ingredients": "五花肉",
+      "steps": "1.五花肉切片",
+      "createdAt": 1793094349033
+    }
+  ]
 }
