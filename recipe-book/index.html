@@ -325,8 +325,15 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
   .empty{padding:50px 16px}
   .empty .big{font-size:52px}
 }
-@media (hover:none){.del-btn{opacity:1}}
+/*@media (hover:none){.del-btn{opacity:1}} */
+   @media (hover:none){
+  /* 默认隐藏所有删除按钮 */
+  .del-btn { opacity: 0; }
+  /* 只有当前选中的分类（或者展开的分类），才显示删除按钮 */
+  .cat-row.active .del-btn, .sub-row.active .del-btn { opacity: 1; }
+}
   /* 全屏看图样式 */
+   
 #imgViewer {
   position: fixed; inset: 0; z-index: 999;
   background: rgba(0, 0, 0, 0.85);
