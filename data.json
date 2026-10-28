@@ -60,6 +60,16 @@
   ],
   "recipes": [
     {
+      "id": "zg7k1kte",
+      "name": "辣椒炒肉",
+      "image": null,
+      "catId": "cat_hun",
+      "subId": "sub_3",
+      "ingredients": "1.五花肉（肥瘦相间）\n2.二荆条辣椒、小米椒\n3.蒜",
+      "steps": "1.五花肉切片\n2.小火煎五花肉至干煸\n3.放辣椒大火翻炒，放鸡精，一点点盐，辣椒软后完成",
+      "createdAt": 1793151459877
+    },
+    {
       "id": "kd0tnwb5",
       "name": "清炖牛肋条",
       "image": null,
