@@ -327,10 +327,10 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
 }
 /*@media (hover:none){.del-btn{opacity:1}} */
   @media (hover:none){
-  /* 未选中时：透明且不可点击，彻底不阻挡父元素点击 */
-  .del-btn { opacity: 0; pointer-events: none; }
-  /* 选中时：显示且恢复可点击 */
-  .cat-row.active .del-btn, .sub-row.active .del-btn { opacity: 1; pointer-events: auto; }
+  /* 彻底隐藏，不占位，不拦截点击 */
+  .del-btn { display: none; }
+  /* 选中该分类后，才重新显示出来 */
+  .cat-row.active .del-btn, .sub-row.active .del-btn { display: grid; }
 }
   /* 全屏看图样式 */
    
