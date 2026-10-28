@@ -88,16 +88,6 @@
       "ingredients": "1.牛肋条1kg\n2.苹果半个、大葱一长段、姜片、洋葱半个\n3.白萝卜、藕等",
       "steps": "1.牛肋条泡血水1小时\n2.冷水下锅焯水（加大葱、姜片煮开几分钟去浮沫）\n3.电饭煲里放牛肋条、苹果、大葱、洋葱、姜片，选模式煮1个半小时+（最后半小时放萝卜藕之类的）",
       "createdAt": 1793151228285
-    },
-    {
-      "id": "pof12m6t",
-      "name": "番茄炒蛋",
-      "image": "https://cdn.jsdelivr.net/gh/KKlmmm/kk-@main/images/1793112795946-1rmpyf3y.jpg",
-      "catId": "cat_su",
-      "subId": "sub_4",
-      "ingredients": "1.番茄2个\n2.鸡蛋4个",
-      "steps": "1.先炒鸡蛋",
-      "createdAt": 1793112799570
     }
   ]
 }
