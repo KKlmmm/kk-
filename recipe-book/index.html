@@ -326,11 +326,11 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
   .empty .big{font-size:52px}
 }
 /*@media (hover:none){.del-btn{opacity:1}} */
-   @media (hover:none){
-  /* 默认隐藏所有删除按钮 */
-  .del-btn { opacity: 0; }
-  /* 只有当前选中的分类（或者展开的分类），才显示删除按钮 */
-  .cat-row.active .del-btn, .sub-row.active .del-btn { opacity: 1; }
+  @media (hover:none){
+  /* 未选中时：透明且不可点击，彻底不阻挡父元素点击 */
+  .del-btn { opacity: 0; pointer-events: none; }
+  /* 选中时：显示且恢复可点击 */
+  .cat-row.active .del-btn, .sub-row.active .del-btn { opacity: 1; pointer-events: auto; }
 }
   /* 全屏看图样式 */
    
@@ -778,7 +778,8 @@ function renderSidebar(){
       <span class="count">${total}</span>
       <button class="del-btn" title="删除">✕</button>`;
     row.onclick = e => {
-      if(e.target.classList.contains('del-btn')){ deleteCategory(cat.id); return; }
+     //if(e.target.classList.contains('del-btn')){ deleteCategory(cat.id); return; }
+       if(e.target.closest('.del-btn')){ deleteCategory(cat.id); return; }
       if(selected.catId === cat.id && !selected.subId && isOpen){
         expanded.delete(cat.id);
       }else{
@@ -801,7 +802,8 @@ function renderSidebar(){
                           ${cnt ? `<span class="count">${cnt}</span>` : ''}
                           <button class="del-btn" title="删除">✕</button>`;
         srow.onclick = e => {
-          if(e.target.classList.contains('del-btn')){ deleteSub(cat.id, sub.id); return; }
+         // if(e.target.classList.contains('del-btn')){ deleteSub(cat.id, sub.id); return; }
+           if(e.target.closest('.del-btn')){ deleteSub(cat.id, sub.id); return; }
           selected = { catId: cat.id, subId: sub.id };
           render(); autoCloseSidebar();
         };
