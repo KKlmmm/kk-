@@ -56,6 +56,16 @@
   ],
   "recipes": [
     {
+      "id": "b4rs513m",
+      "name": "丝瓜文贝汤",
+      "image": null,
+      "catId": "cat_su",
+      "subId": "ig9fqh7t",
+      "ingredients": "1.1根丝瓜、文贝（花蛤等贝类）\n2.葱、姜、蒜",
+      "steps": "1.丝瓜滚刀切块\n2.倒油，加入蒜末、葱、姜片炒香，放丝瓜，一点盐\n3.丝瓜软后加一瓶矿泉水，倒入文贝（花蛤）\n4.水开转小火煮",
+      "createdAt": 1793353121306
+    },
+    {
       "id": "j4fvyuwf",
       "name": "尖椒鸡",
       "image": "https://cdn.jsdelivr.net/gh/KKlmmm/kk-@main/images/1793152709211-vtwurhve.jpg",
